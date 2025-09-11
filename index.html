@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esy Connect - VPN</title>
+
+  <!-- 👉 এখানে Ads কোড বসাতে হবে -->
+  <!-- [Your AdSense or any Ad code here] -->
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background: black;
+      color: pink;
+      padding: 12px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .container {
+      margin: 20px auto;
+      max-width: 400px;
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-bottom: 15px;
+      color: darkgoldenrod;
+    }
+    button {
+      width: 95%;
+      padding: 12px;
+      background: green;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover { background: darkgreen; }
+
+    .option {
+      margin: 10px auto;
+      padding: 12px;
+      border-radius: 10px;
+      background: #e3f3ff;
+      cursor: pointer;
+      font-weight: bold;
+      color: #0077cc;
+      border: 1px solid #cce7ff;
+    }
+    .option.selected {
+      background: #0077cc;
+      color: white;
+    }
+
+    /* VPN Toggle Button */
+    .toggle {
+      margin: 30px auto;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: red;
+      border: 10px solid black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 26px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      transition: all 0.5s ease;
+      box-shadow: 0px 0px 25px rgba(0,0,0,0.5);
+    }
+    .toggle.on {
+      background: green;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<header>Esy Connect</header>
+
+<!-- প্রথম পেজ -->
+<div class="container" id="start-page">
+  <button onclick="showPage('category-page')">Get Start Proxy</button>
+</div>
+
+<!-- Category Page -->
+<div class="container hidden" id="category-page">
+  <h2>Chose Your Category</h2>
+  <div class="option" onclick="selectOption(this, 'country-page')">👤 Personal</div>
+  <div class="option" onclick="selectOption(this, 'country-page')">⌨️ Data Entry</div>
+  <div class="option" onclick="selectOption(this, 'country-page')">🛒 Facebook Market</div>
+  <div class="option" onclick="selectOption(this, 'country-page')">⭐ Prime Web</div>
+  <div class="option" onclick="selectOption(this, 'country-page')">🔐 Proxy Zone</div>
+</div>
+
+<!-- Country Page -->
+<div class="container hidden" id="country-page">
+  <h2>Select Your Country</h2>
+  <div class="option" onclick="selectOption(this, 'time-page')">Bangladesh</div>
+  <div class="option" onclick="selectOption(this, 'time-page')">India</div>
+  <div class="option" onclick="selectOption(this, 'time-page')">United States</div>
+  <div class="option" onclick="selectOption(this, 'time-page')">Singapore</div>
+  <div class="option" onclick="selectOption(this, 'time-page')">UK</div>
+  <div class="option" onclick="selectOption(this, 'time-page')">Canada</div>
+  <div class="option" onclick="selectOption(this, 'time-page')">Germany</div>
+  <div class="option" onclick="selectOption(this, 'time-page')">Australia</div>
+</div>
+
+<!-- Time Page -->
+<div class="container hidden" id="time-page">
+  <h2>Time Table</h2>
+  <div class="option" onclick="selectOption(this, 'vpn-page')">5 Minutes</div>
+  <div class="option" onclick="selectOption(this, 'vpn-page')">10 Minutes</div>
+  <div class="option" onclick="selectOption(this, 'vpn-page')">1 Hour</div>
+</div>
+
+<!-- VPN Page -->
+<div class="container hidden" id="vpn-page">
+  <div class="toggle" id="vpn-toggle" onclick="toggleVpn()">OFF</div>
+</div>
+
+<script>
+  // Page navigation
+  function showPage(id) {
+    document.querySelectorAll(".container").forEach(div => div.classList.add("hidden"));
+    document.getElementById(id).classList.remove("hidden");
+  }
+
+  // Option select
+  function selectOption(el, nextPage) {
+    el.parentElement.querySelectorAll(".option").forEach(opt => opt.classList.remove("selected"));
+    el.classList.add("selected");
+    setTimeout(() => { showPage(nextPage); }, 500);
+  }
+
+  // VPN Toggle ON/OFF
+  function toggleVpn() {
+    let btn = document.getElementById("vpn-toggle");
+    btn.classList.toggle("on");
+    btn.innerText = btn.classList.contains("on") ? "ON" : "OFF";
+  }
+
+  // Start page visible by default
+  showPage("start-page");
+</script>
+
+<style>
+  .hidden { display: none; }
+</style>
+
+</body>
+</html>
